@@ -1,6 +1,6 @@
 //Must install dependancies first npm install or npm i express. Before that do npm init -y
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 
 //requires the packages to work!
 const fs = require("fs");
@@ -10,6 +10,23 @@ const notes = require("./db/db.json");
 const express = require("express");
 //This initiates the server
 const app = express();
+
+app.use(express.urlencoded({ extended: true}));
+app.use(express.json());
+app.use(express.static("public"));
+
+//ROUTES////
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/index.html'));
+});
+
+app.get('/notes', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/notes.html'));
+});
+
+
+///END OF ROUTES HERE//////
 
 //use this to check the port is on the correct port number 
 //use back ticks to console log! 
