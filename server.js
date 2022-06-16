@@ -8,4 +8,11 @@ const path = require("path");
 //must require database so that we can get the notes people wrote
 const notes = require("./db/db.json");
 const express = require("express");
+//This initiates the server
+const app = express();
 
+//use this to check the port is on the correct port number 
+//use back ticks to console log! 
+app.listen(PORT, () => {
+    console.log(`notes app now on port ${PORT}!😋🔥🤷‍♀️`);
+})
